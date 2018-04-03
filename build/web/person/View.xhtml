@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+        <ui:composition template="/template.xhtml">
+                <ui:define name="title">
+                        <h:outputText value="#{bundle.ViewPersonTitle}"></h:outputText>
+                </ui:define>
+                <ui:define name="body">
+                        <h:panelGroup id="messagePanel" layout="block">
+                                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+                        </h:panelGroup>
+                        <h:form>
+                                <h:panelGrid columns="2">
+                                        <h:outputText value="#{bundle.ViewPersonLabel_idPerson}"/>
+                                        <h:outputText value="#{personController.selected.idPerson}" title="#{bundle.ViewPersonTitle_idPerson}"/>
+                                        <h:outputText value="#{bundle.ViewPersonLabel_nombre}"/>
+                                        <h:outputText value="#{personController.selected.nombre}" title="#{bundle.ViewPersonTitle_nombre}"/>
+                                        <h:outputText value="#{bundle.ViewPersonLabel_PApellido}"/>
+                                        <h:outputText value="#{personController.selected.PApellido}" title="#{bundle.ViewPersonTitle_PApellido}"/>
+                                        <h:outputText value="#{bundle.ViewPersonLabel_SApellido}"/>
+                                        <h:outputText value="#{personController.selected.SApellido}" title="#{bundle.ViewPersonTitle_SApellido}"/>
+                                        <h:outputText value="#{bundle.ViewPersonLabel_telefContact1}"/>
+                                        <h:outputText value="#{personController.selected.telefContact1}" title="#{bundle.ViewPersonTitle_telefContact1}"/>
+                                        <h:outputText value="#{bundle.ViewPersonLabel_telefContact2}"/>
+                                        <h:outputText value="#{personController.selected.telefContact2}" title="#{bundle.ViewPersonTitle_telefContact2}"/>
+                                        <h:outputText value="#{bundle.ViewPersonLabel_email}"/>
+                                        <h:outputText value="#{personController.selected.email}" title="#{bundle.ViewPersonTitle_email}"/>
+                                </h:panelGrid>
+                                <br />
+                                <h:commandLink action="#{personController.destroyAndView}" value="#{bundle.ViewPersonDestroyLink}"/>
+                                <br />
+                                <br />
+                                <h:link outcome="Edit" value="#{bundle.ViewPersonEditLink}"/>
+                                <br />
+                                <h:commandLink action="#{personController.prepareCreate}" value="#{bundle.ViewPersonCreateLink}" />
+                                <br />
+                                <h:commandLink action="#{personController.prepareList}" value="#{bundle.ViewPersonShowAllLink}"/>
+                                <br />
+                                <br />
+                                <h:link outcome="/index" value="Volver"/>
+
+                        </h:form>
+                </ui:define>
+        </ui:composition>
+
+</html>

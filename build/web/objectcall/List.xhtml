@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+        <ui:composition template="/template.xhtml">
+                <ui:define name="title">
+                        <h:outputText value="#{bundle.ListObjectcallTitle}"></h:outputText>
+                </ui:define>
+                <ui:define name="body">
+                        <h:form styleClass="jsfcrud_list_form">
+                                <h:panelGroup id="messagePanel" layout="block">
+                                        <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+                                </h:panelGroup>
+                                <h:outputText escape="false" value="#{bundle.ListObjectcallEmpty}" rendered="#{objectcallController.items.rowCount == 0}"/>
+                                <h:panelGroup rendered="#{objectcallController.items.rowCount > 0}">
+                                        <h:outputText value="#{objectcallController.pagination.pageFirstItem + 1}..#{objectcallController.pagination.pageLastItem + 1}/#{objectcallController.pagination.itemsCount}"/>&nbsp;
+                                        <h:commandLink action="#{objectcallController.previous}" value="#{bundle.Previous} #{objectcallController.pagination.pageSize}" rendered="#{objectcallController.pagination.hasPreviousPage}"/>&nbsp;
+                                        <h:commandLink action="#{objectcallController.next}" value="#{bundle.Next} #{objectcallController.pagination.pageSize}" rendered="#{objectcallController.pagination.hasNextPage}"/>&nbsp;
+                                        <h:dataTable value="#{objectcallController.items}" var="item" border="0" cellpadding="2" cellspacing="0" rowClasses="jsfcrud_odd_row,jsfcrud_even_row" rules="all" style="border:solid 1px">
+                                                <h:column>
+                                                        <f:facet name="header">
+                                                                <h:outputText value="#{bundle.ListObjectcallTitle_idObjectCall}"/>
+                                                        </f:facet>
+                                                        <h:outputText value="#{item.idObjectCall}"/>
+                                                </h:column>
+                                                <h:column>
+                                                        <f:facet name="header">
+                                                                <h:outputText value="#{bundle.ListObjectcallTitle_idpersona}"/>
+                                                        </f:facet>
+                                                        <h:outputText value="#{item.idpersona}"/>
+                                                </h:column>
+                                                <h:column>
+                                                        <f:facet name="header">
+                                                                <h:outputText value="&nbsp;"/>
+                                                        </f:facet>
+                                                        <h:commandLink action="#{objectcallController.prepareView}" value="#{bundle.ListObjectcallViewLink}"/>
+                                                        <h:outputText value=" "/>
+                                                        <h:commandLink action="#{objectcallController.prepareEdit}" value="#{bundle.ListObjectcallEditLink}"/>
+                                                        <h:outputText value=" "/>
+                                                        <h:commandLink action="#{objectcallController.destroy}" value="#{bundle.ListObjectcallDestroyLink}"/>
+                                                </h:column>
+                                        </h:dataTable>
+                                </h:panelGroup>
+                                <br />
+                                <h:commandLink action="#{objectcallController.prepareCreate}" value="#{bundle.ListObjectcallCreateLink}"/>
+                                <br />
+                                <br />
+                                <h:link outcome="/index" value="Volver"/>
+                        </h:form>
+                </ui:define>
+        </ui:composition>
+
+</html>

@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+        <ui:composition template="/template.xhtml">
+                <ui:define name="title">
+                        <h:outputText value="#{bundle.ViewCallsTitle}"></h:outputText>
+                </ui:define>
+                <ui:define name="body">
+                        <h:panelGroup id="messagePanel" layout="block">
+                                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+                        </h:panelGroup>
+                        <h:form>
+                                <h:panelGrid columns="2">
+                                        <h:outputText value="#{bundle.ViewCallsLabel_idCalls}"/>
+                                        <h:outputText value="#{callsController.selected.idCalls}" title="#{bundle.ViewCallsTitle_idCalls}"/>
+                                        <h:outputText value="#{bundle.ViewCallsLabel_telefonCall}"/>
+                                        <h:outputText value="#{callsController.selected.telefonCall}" title="#{bundle.ViewCallsTitle_telefonCall}"/>
+                                        <h:outputText value="#{bundle.ViewCallsLabel_asunto}"/>
+                                        <h:outputText value="#{callsController.selected.asunto}" title="#{bundle.ViewCallsTitle_asunto}"/>
+                                        <h:outputText value="#{bundle.ViewCallsLabel_estado}"/>
+                                        <h:outputText value="#{callsController.selected.estado}" title="#{bundle.ViewCallsTitle_estado}"/>
+                                        <h:outputText value="#{bundle.ViewCallsLabel_menssage}"/>
+                                        <h:outputText value="#{callsController.selected.menssage}" title="#{bundle.ViewCallsTitle_menssage}"/>
+                                        <h:outputText value="#{bundle.ViewCallsLabel_idllamante}"/>
+                                        <h:outputText value="#{callsController.selected.idllamante}" title="#{bundle.ViewCallsTitle_idllamante}"/>
+                                        <h:outputText value="#{bundle.ViewCallsLabel_idObjetCall}"/>
+                                        <h:outputText value="#{callsController.selected.idObjetCall}" title="#{bundle.ViewCallsTitle_idObjetCall}"/>
+                                </h:panelGrid>
+                                <br />
+                                <h:commandLink action="#{callsController.destroyAndView}" value="#{bundle.ViewCallsDestroyLink}"/>
+                                <br />
+                                <br />
+                                <h:link outcome="Edit" value="#{bundle.ViewCallsEditLink}"/>
+                                <br />
+                                <h:commandLink action="#{callsController.prepareCreate}" value="#{bundle.ViewCallsCreateLink}" />
+                                <br />
+                                <h:commandLink action="#{callsController.prepareList}" value="#{bundle.ViewCallsShowAllLink}"/>
+                                <br />
+                                <br />
+                                <h:link outcome="/index" value="Volver"/>
+
+                        </h:form>
+                </ui:define>
+        </ui:composition>
+
+</html>
